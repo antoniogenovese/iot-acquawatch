@@ -4,6 +4,8 @@
 Implementation of an IoT architecture using Serverless Computing via LocalStack. 
 # Smart Control and Emergency Management for Your Aquarium
 
+<p align="center"><img src="./img/dashboard.png"/></p>
+
 ## Project overview
 
 
