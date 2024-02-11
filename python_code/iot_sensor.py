@@ -14,10 +14,10 @@ pollution_queueUrl = f"{endpoint_url}/000000000000/pollution"
 def iot_sensor():
 
     sqs_client = boto3.client('sqs', region_name='us-east-2', endpoint_url=endpoint_url)
-    ph = 7#random.randint(0, 14)
-    random_t = 23.6#random.uniform(0.0, 40.0)
+    ph = random.randint(0, 14)
+    random_t = random.uniform(0.0, 40.0)
     temperature = round(Decimal(str(random_t)), 2)
-    hardness = 5#random.randint(0, 15)
+    hardness = random.randint(0, 15)
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     msg = f'{{"ph": {ph}, "temperature": {temperature}, "hardness": {hardness}, "timestamp": "{timestamp}"}}'
     sqs_client.send_message(QueueUrl=details_queueUrl, MessageBody=msg,
