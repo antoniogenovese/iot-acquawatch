@@ -52,25 +52,25 @@ Whenever a new timestamp of the filtering system is inserted, **Dynamo Db Stream
 
 1. Clone the repository
         
-        git clone https://github.com/davideiov/smart-irrigation-iot.git
+        git clone https://github.com/antoniogenovese/iot-aquawatch-Localstack-AWS-.git
         
-2. Launch LocalStack
+3. Launch LocalStack
         
         docker run --rm -it -p 4566:4566 -p 4571:4571 localstack/localstack
         
-3. Create the SQS queues that will trigger the lambda functions
+4. Create the SQS queues that will trigger the lambda functions
 
         cd python_code
         aws sqs create-queue --queue-name pollution --endpoint-url=http://localhost:4566
         aws sqs create-queue --queue-name details --endpoint-url=http://localhost:4566
    
-4. Create the role for lambda functions
+5. Create the role for lambda functions
            
         aws iam create-role --role-name lambda_role --assume-role-policy-document file://policy_role_lambda.json --query 'Role.Arn' --endpoint-url=http://localhost:4566
 		aws iam put-role-policy --role-name lambda_role --policy-name lambda_policy --policy-document file://policy_lambda.json --endpoint-url=http://localhost:4566
 
 
-5. To create all the services, run the file create_service.py
+6. To create all the services, run the file create_service.py
 			        
 		python3 create_service.py > output.txt
         
